@@ -1,0 +1,44 @@
+# save to ./bgelogic/cells/my_custom_cells.py
+# refresh imported nodes after changes have been applied to both custom cells
+# and nodes
+
+import bgelogic
+
+ParameterCell = bgelogic.ParameterCell
+LogicNetworkSubCell = bgelogic.LogicNetworkSubCell
+
+# A sample parameter with one input and one custom output that
+# increments a value
+
+
+class CustomParameterCell(ParameterCell):
+
+    # Initializes the cell
+    def __init__(self):
+        ParameterCell.__init__(self)
+
+        # The input value of the parameter.
+        self.my_input = None
+
+        # Initialize the output value (this will be used by the LogicNetworkSubCell below).
+        self._my_output_value = 0
+
+        # Define a custom output value. The LogicNetworkSubCell class is a data fetcher.
+        self.MY_OUTPUT = LogicNetworkSubCell(self, self.get_my_output)
+
+    # Function used by the LogicNetworkSubCell above.
+    def get_my_output(self):
+        return self._my_output_value
+
+    # Evaluating the node. This is your BGE code.
+    def evaluate(self):
+
+        # get the value from the input field.
+        input = self.get_input(self.my_input)
+
+        # tell the node it is ready to perform (after all variables are fetched)
+        self._set_ready()
+
+        # BGE Code
+        if input is not None:
+            self.my_output_value += input_value

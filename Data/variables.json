@@ -1,0 +1,14 @@
+{
+  "LabelMusicVolume": 50,
+  "LabelFXVolume": 50,
+  "resolutionW": 1920,
+  "MusicVolume": 0.4999999888241291,
+  "resolutionH": 1080,
+  "FXVolume": 0.4999999888241291,
+  "fullscreen": true,
+  "vsync": true,
+  "AO": true,
+  "bloom": true,
+  "SSR": true,
+  "VolumetricLight": true
+}

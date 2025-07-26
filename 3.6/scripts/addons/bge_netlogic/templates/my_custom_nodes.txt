@@ -1,0 +1,31 @@
+# save in ./bgelogic/nodes/my_custom_nodes.py
+
+import bpy
+import bge_netlogic
+NLParameterSocket = bge_netlogic.basicnodes.NLParameterSocket
+NLParameterNode = bge_netlogic.basicnodes.NLParameterNode
+NLIntegerFieldSocket = bge_netlogic.basicnodes.NLIntegerFieldSocket
+
+
+class CustomParameterNode(bpy.types.Node, NLParameterNode):
+    bl_idname = "CustomParameterNode"
+    bl_label = "Custom Parameter"
+
+    def init(self, context):
+        NLParameterNode.init(self, context)
+        self.inputs.new(NLIntegerFieldSocket.bl_idname, "My Input")
+        self.outputs.new(NLParameterSocket.bl_idname, "My Output")
+
+    def get_netlogic_class_name(self):
+        return "my_custom_cells.CustomParameterCell"
+
+    # Input names with lowercase letters is a convention
+    def get_input_sockets_field_names(self):
+        return ["my_input"]
+
+    # Output names with capital letters is a convention
+    def get_output_socket_varnames(self):
+        return ["MY_OUTPUT"]
+
+
+bge_netlogic.register_nodes("MY CUSTOM NODES", CustomParameterNode)

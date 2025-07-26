@@ -1,0 +1,11 @@
+[submodule "bge_netlogic"]
+	path = bge_netlogic
+	url = https://github.com/UPBGE/UPBGE-logicnodes.git
+	branch = master
+[submodule "thelightmapper"]
+	path = bge_thelightmapper
+	url = https://github.com/lordloki/The_Lightmapper.git
+	branch = master
+[submodule "EasyOnline"]
+	path = bge_easyonline
+	url = https://github.com/lordloki/EasyOnline.git
